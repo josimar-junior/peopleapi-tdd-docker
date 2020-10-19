@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jj.peopleapi</groupId>
-	<artifactId>people-api</artifactId>
+	<artifactId>peopleapi-tdd-docker</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>people-api</name>
 	<description>People API</description>

@@ -10,7 +10,20 @@ spring:
     ddl-auto: none
  flyway:
     locations: classpath:db/migration/postgres
+    
 ---
+
+security:
+ oauth:
+  enabled: true
+  server:
+    url: http://localhost:8888/sso/oauth/url_check_token
+    token: http://localhost:8888/sso/oauth/token
+    clientId: peopleapi
+    clientSecret: peopleapi
+    
+---
+
 spring:
  profiles: dev
  datasource:
