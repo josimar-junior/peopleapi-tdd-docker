@@ -13,24 +13,23 @@ spring:
     
 ---
 
-security:
- oauth:
-  enabled: true
-  server:
-    url: http://localhost:8888/sso/oauth/url_check_token
-    token: http://localhost:8888/sso/oauth/token
-    clientId: peopleapi
-    clientSecret: peopleapi
-    
----
+keycloak:
+  auth-server-url: http://localhost:8180/auth
+  realm: SpringBootKeycloak
+  resource: login-app
+  public-client: false
+  principal-attribute: preferred_username
 
+---
 spring:
  profiles: dev
  datasource:
     url: jdbc:postgresql://localhost:5432/peopleapi
     username: peopleapi
     password: peopleapi
+    
 ---
+
 spring:
     profiles: prod
     datasource:
