@@ -36,5 +36,5 @@ public class YAMLSpringConfig {
 	public void setJpa(Map<String, String> jpa) {
 		this.jpa = jpa;
 	}
-	
+
 }

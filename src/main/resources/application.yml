@@ -19,6 +19,8 @@ keycloak:
   resource: login-app
   public-client: false
   principal-attribute: preferred_username
+  credentials:
+    secret: de75a90f-5b07-471a-9dbf-6f1d5e406c92
 
 ---
 spring:
