@@ -33,6 +33,11 @@ spring:
 ---
 
 spring:
-    profiles: prod
-    datasource:
-        jndi-name: java:comp/env/jdbc/peopleapi
+ profiles: prod
+ datasource:
+    url: jdbc:postgresql://postgres:5432/peopleapi
+    username: peopleapi
+    password: peopleapi
+    # jndi-name: java:comp/env/jdbc/peopleapi
+        
+        
