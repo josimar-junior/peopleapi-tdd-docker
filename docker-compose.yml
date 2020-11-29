@@ -1,14 +1,51 @@
 version: '3.4'
+
+volumes:
+  postgres_data:
+    driver: local
+      
 services:
   postgres:
     image: postgres:10.5-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     restart: always
     ports:
-      - "5432:5432"
+      - 5433:5432
+    environment:
+      - POSTGRES_DB=keycloak
+      - POSTGRES_USER=keycloak
+      - POSTGRES_PASSWORD=password
+    networks:
+      - peopleapi-network
+  postgresapi:
+    image: postgres:10.5-alpine
+    restart: always
+    ports:
+      - 5432:5432
     environment:
       - POSTGRES_USER=peopleapi
       - POSTGRES_PASSWORD=peopleapi
       - POSTGRES_DB=peopleapi
+    networks:
+      - peopleapi-network
+  keycloak:
+    image: quay.io/keycloak/keycloak
+    restart: always
+    ports:
+      - 8180:8080
+    environment:
+      - DB_VENDOR=POSTGRES
+      - DB_ADDR=postgres
+      - DB_DATABASE=keycloak
+      - DB_USER=keycloak
+      - DB_SCHEMA=public
+      - DB_PASSWORD=password
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - KEYCLOAK_FRONTEND_URL=http://keycloak:8080/auth
+    depends_on:
+      - postgres
     networks:
       - peopleapi-network
   peopleapi:
@@ -22,9 +59,13 @@ services:
       - 8080:8080
     command: mvn spring-boot:run
     depends_on:
-      - postgres
+      - postgresapi
     networks:
       - peopleapi-network
 networks:
   peopleapi-network:
     driver: bridge
+    
+    
+    
+    

@@ -20,7 +20,7 @@ keycloak:
   public-client: false
   principal-attribute: preferred_username
   credentials:
-    secret: de75a90f-5b07-471a-9dbf-6f1d5e406c92
+    secret: fb1c549a-5609-4c2c-9ae7-1a0999d50635
 
 ---
 spring:
@@ -35,7 +35,7 @@ spring:
 spring:
  profiles: prod
  datasource:
-    url: jdbc:postgresql://postgres:5432/peopleapi
+    url: jdbc:postgresql://postgresapi:5432/peopleapi
     username: peopleapi
     password: peopleapi
     # jndi-name: java:comp/env/jdbc/peopleapi

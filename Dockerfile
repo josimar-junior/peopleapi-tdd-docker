@@ -7,4 +7,4 @@ ADD target/peopleapi.jar /app/app.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=prod", "/app/app.jar"]
+ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=prod", "-Dkeycloak.auth-server-url=http://keycloak:8080/auth", "/app/app.jar"]
